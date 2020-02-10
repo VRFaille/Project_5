@@ -58,3 +58,6 @@ def del_dir_outliers(df, colnum):
     df.drop(index = lst_outliers, inplace = True)
     
 del_dir_outliers(df_selected_cols, df_selected_cols.price)
+
+# Add distance to monuments 
+

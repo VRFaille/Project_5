@@ -15,8 +15,6 @@ import requests
 import re
 
 
-
-
 ###open files ###
 
 #df = pd.read_csv("/Users/victorrobert-faille/Documents/Ironhack/Projects/Project-5/AB_NYC_2019.csv")
@@ -72,4 +70,7 @@ def get_coordinates(x):
 names_sights = [i.text for i in soup.select("p.phcaption")]
 names_sight_clean = clean_names_sight(names_sights)
 df_place = get_coordinates(names_sight_clean)
-# df_place = df_place.apply(lambda x : np.nan if x == [] else x)
+df_place = df_place.applymap(lambda x : np.nan if x=="" else x)
+df_place.dropna(axis = 1, how = "all", inplace = True)
+df_place.to_csv("Distance_sights.csv")
+
